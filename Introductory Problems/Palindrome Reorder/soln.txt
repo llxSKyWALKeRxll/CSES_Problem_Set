@@ -1,0 +1,25 @@
+import sys,os.path
+if os.path.exists('ip.in'):
+    sys.stdin = open('ip.in', 'r')
+    sys.stdout = open('op.out', 'w')
+
+from collections import *
+
+def detri():
+	s = input()
+	if len(set(s))==1: print(s); exit()
+	dictMap = Counter(s)
+	dictMap = dict(sorted(dictMap.items(), key = lambda item: item[1]))
+	pal = ""
+	for char in dictMap:
+		num = dictMap[char]
+		while num:
+			pal += char
+			num -= 1
+			if num:
+				pal = char + pal
+				num -= 1
+	print(pal)
+
+if __name__ == "__main__":
+	detri()
